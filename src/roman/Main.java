@@ -1,4 +1,6 @@
-import java.util.Arrays;
+package roman;
+
+import static roman.RomanNumber.romanToInt;
 
 /**
  * For example, two is written as II in Roman numeral, just two one's added together.
@@ -15,10 +17,6 @@ import java.util.Arrays;
  * X can be placed before L (50) and C (100) to make 40 and 90.
  * C can be placed before D (500) and M (1000) to make 400 and 900.
  * <p>
- * romanToInt("III"); // => 3
- * romanToInt("LVIII"); // => 58
- * romanToInt("IX"); // => 9
- * romanToInt("MCMXCIV"); // => 1994
  */
 public class Main {
     public static void main(String[] args) {
@@ -26,25 +24,5 @@ public class Main {
         System.out.println(romanToInt("LVIII")); // => 58
         System.out.println(romanToInt("IX")); // => 9
         System.out.println(romanToInt("MCMXCIV")); // => 1994
-    }
-
-    public static int romanToInt(String roman) {
-        final int number_of_chars = roman.length();
-        final char[] roman_as_chars = roman.toCharArray();
-        final int[] roman_as_ints = new int[number_of_chars];
-
-        for( int i = 0; i < roman.length(); i++ ) {
-            switch ( roman_as_chars[i] ) {
-                case 'I' -> roman_as_ints[i] = 1;
-                case 'V' -> roman_as_ints[i] = 5;
-                case 'X' -> roman_as_ints[i] = 10;
-                case 'L' -> roman_as_ints[i] = 50;
-                case 'C' -> roman_as_ints[i] = 100;
-                case 'D' -> roman_as_ints[i] = 500;
-                case 'M' -> roman_as_ints[i] = 1000;
-            }
-        }
-
-        return Arrays.stream(roman_as_ints).sum();
     }
 }
